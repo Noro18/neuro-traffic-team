@@ -17,6 +17,6 @@ tan ne'e atu bele install librarie sira ne'ebe presiza bele installa deit kedas 
 
 Maibe se quando uza versaun python ne'ebe boot > 3.11 entaun bele:
 - installa tia lai python versaun foun
-- no utiliza fali commando ``py -3.11 -m pip install -r requirements.txt
+- no utiliza fali commando ``py -3.11 -m pip install -r requirements.txt``
 - No se quando hanesan ne'e ona troka mos interpreter ne'ebe uza iha vs code ho commando ``Ctrl + Shift + p`` no search python interpreter no hili **python 3.11** ne'ebe installa ona
 - Se quando run file iha terminal uza commando ``py -3.11 cv.py`` se wainhira ba ona directory ne'ebe mak loos.
