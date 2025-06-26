@@ -2,6 +2,17 @@
 
 {% block content %}
 
+
+    <h1>YOLOv8 Inference Video Stream</h1>
+    <button class="btn btn-primary" onclick="startStream()">Start Inference</button>
+    <div class="border rounded shadow p-2 bg-light d-flex  justify-content-center align-items-center" style="min-height: 540px; min-width: 960px;" id="video-container"></div>
     
+    <script>
+        function startStream() {
+            document.getElementById('video-container').innerHTML =
+               '<img src="{% url "inference" %}" class="img-fluid rounded" style="max-width: 960px; max-height: 540px">';
+        }
+    </script>
+
 
 {% endblock %}
