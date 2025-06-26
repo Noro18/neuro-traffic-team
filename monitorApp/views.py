@@ -12,3 +12,6 @@ def gen(): # function ida ne'e hanesan function tambahan ne'ebe loop kada frame 
 
 def video_feed(request):
     return StreamingHttpResponse(gen(), content_type='multipart/x-mixed-replace; boundary=frame')
+
+def analysis(request):
+    return render(request, 'analysis.html')
