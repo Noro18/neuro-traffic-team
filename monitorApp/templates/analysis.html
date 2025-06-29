@@ -68,7 +68,10 @@
                 </div>
                 <div class="card-body">
                   <div class="chart">
-                    <canvas id="lineChart"></canvas>
+                    <canvas
+                      id="lineChart"
+                      style="width: 100%; height: 400px"
+                    ></canvas>
                   </div>
                 </div>
                 <!-- /.card-body -->
@@ -101,86 +104,72 @@
   <script src="../../dist/js/demo.js"></script>
   <!-- Page specific script -->
   <script>
+    
+    
+    
     $(function () {
       //-------------
       //- LINE CHART -
       //--------------
-      var lineChartCanvas = $("#lineChart").get(0).getContext("2d");
-      var lineChartOptions = {
-        maintainAspectRatio: false,
-        responsive: true,
-        legend: {
-          display: false,
-        },
-        scales: {
-          xAxes: [
-            {
-              gridLines: {
-                display: false,
-              },
-            },
-          ],
-          yAxes: [
-            {
-              gridLines: {
-                display: false,
-              },
-            },
-          ],
-        },
-      };
-      var lineChartData = {
-        labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-        ],
-        datasets: [
-          {
-            label: "Digital Goods",
-            backgroundColor: "rgba(60,141,188,0.9)",
-            borderColor: "rgba(60,141,188,0.8)",
-            pointRadius: false,
-            pointColor: "#3b8bba",
-            pointStrokeColor: "rgba(60,141,188,1)",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(60,141,188,1)",
-            data: [28, 48, 40, 19, 86, 27, 90],
-            fill: false,
-          },
-          {
-            label: "Electronics",
-            backgroundColor: "rgba(210, 214, 222, 1)",
-            borderColor: "rgba(210, 214, 222, 1)",
-            pointRadius: false,
-            pointColor: "rgba(210, 214, 222, 1)",
-            pointStrokeColor: "#c1c7d1",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
-            data: [65, 59, 80, 81, 56, 55, 40],
-            fill: false,
-          },
-        ],
-      };
-      var lineChart = new Chart(lineChartCanvas, {
-        type: "line",
-        data: lineChartData,
-        options: lineChartOptions,
-      });
+      var lineLabels = {{ line_labels|safe }};
+      var lineData = {{ line_data|safe }};
 
+      console.log(lineLabels);
+      console.log(lineData);
+      var lineChartCanvas = $("#lineChart").get(0).getContext("2d");
+
+      var lineLabels = {{ line_labels|safe }};
+    var lineData = {{ line_data|safe }};
+
+    var ctx = document.getElementById('lineChart').getContext('2d');
+    var lineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: lineLabels,
+            datasets: [{
+                label: 'Total Vehicles per Hour',
+                data: lineData,
+                backgroundColor: 'rgba(60,141,188,0.2)',
+                borderColor: 'rgba(60,141,188,1)',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Hour'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Quantity'
+                    },
+                    beginAtZero: true
+                }
+            }
+        }
+    });
       //-------------
       //- DONUT CHART -
       //-------------
-      var donutChartCanvas = $("#donutChart").get(0).getContext("2d");
+      var donut_labels = {{ donut_labels|safe }};
+      var donut_data = {{ donut_data|safe }};
+      console.log(donut_labels);
+      console.log(donut_data);
+      var donutChartCanvas = $("#donutChart").get(0).getContext("2d"); // ida ne'e atu foti canvas uza nia ID
+
       var donutData = {
-        labels: ["Chrome", "IE", "FireFox", "Safari", "Opera", "Navigator"],
+        labels: donut_labels,
         datasets: [
           {
-            data: [700, 500, 400, 600, 300, 100],
+            data: donut_data,
             backgroundColor: [
               "#f56954",
               "#00a65a",
