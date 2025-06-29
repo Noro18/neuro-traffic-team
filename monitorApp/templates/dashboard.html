@@ -1,5 +1,5 @@
 {% extends "home.html" %}
-{% block body_class %}sidebar-mini{% endblock %}
+
 {% block content %}
 
 
@@ -10,9 +10,8 @@
     <script>
         function startStream() {
             document.getElementById('video-container').innerHTML =
-            '<img src="{% url "inference" %}" class="img-fluid rounded" style="max-width: 960px; max-height: 540px">';
+               '<img src="{% url "inference" %}" class="img-fluid rounded" style="max-width: 960px; max-height: 540px">';
         }
     </script>
-
 
 {% endblock %}
